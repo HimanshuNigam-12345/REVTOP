@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REVTOP: Revision of Topics</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="RevLogo.png" type="image/png">
+</head>
+
+<body>
+  <div class="container">
+    <div class="logo-section">
+      <img src="RevLogo.png" alt="Logo" class="logo">
+    </div>
+    <div class="title-container">
+      <h2 class="title"><span>R</span><span>E</span><span>V</span><span>T</span><span>O</span><span>P</span></h2>
+      <h1 class="sub-title">Generate Questions with AI</h1>
+    </div>
+
+    <!-- Registration and Login Forms -->
+    <div class="auth-container">
+      <div id="registration-container">
+        <h3>Register</h3>
+        <input type="text" id="register-username" placeholder="Username" required>
+        <input type="password" id="register-password" placeholder="Password" required>
+        <input type="text" id="register-firstname" placeholder="First Name">
+        <input type="text" id="register-lastname" placeholder="Last Name">
+        <button type="button" id="register-button">Register</button>
+      </div>
+      <div id="login-container">
+        <h3>Login</h3>
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="button" id="login-button">Login</button>
+      </div>
+    </div>
+
+    <!-- Question Generation Section -->
+<div class="input-container">
+  <label for="input-type">Input Type:</label>
+  <select id="input-type">
+    <option value="text">Text</option>
+    <option value="url">URL</option>
+    <option value="document">Document</option>
+  </select>
+  <div class="input-fields">
+    <textarea id="text-input" rows="5"></textarea>
+    <input type="url" id="url-input" hidden>
+    <input type="file" id="document-upload" accept=".txt,.pdf" hidden>
+    <button id="browse-button">Browse...</button>
+    <span id="selected-file-name"></span>
+    <div style="margin-top: 10px;"></div> <!-- Add a gap -->
+    <button id="show-possible-questions-button">Show Possible Questions</button> <!-- New button -->
+</div>
+</div>
+
+    <!-- Table for Possible Questions -->
+<div class="options-container">
+  <h3>Possible Questions:</h3>
+  <table id="possible-questions-table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Question</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Possible questions will be dynamically inserted here -->
+    </tbody>
+  </table>
+</div>
+
+    <!-- Question Type Options -->
+    <div class="options-container">
+      <h3>Question Type(s): (Select all or none)</h3>
+      <div class="question-type-checkboxes">
+        <label><input type="checkbox" name="question-type[]" value="mcq" id="mcq"> Multiple Choice Questions</label>
+        <label><input type="checkbox" name="question-type[]" value="fill_in_the_blank" id="fill_in_the_blank"> Fill in the Blanks</label>
+        <label><input type="checkbox" name="question-type[]" value="matching" id="matching"> Matching</label>
+        <label><input type="checkbox" name="question-type[]" value="true_false" id="true-false"> True/False</label>
+        <label><input type="checkbox" name="question-type[]" value="short_answer" id="short_answer"> Short Answer</label>
+        <label><input type="checkbox" name="question-type[]" value="long_answer" id="long_answer"> Long Answer</label>
+      </div>
+    </div>
+
+    <!-- Difficulty Level -->
+    <div class="options-container">
+      <h3>Difficulty Level:</h3>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+    </div>
+
+    <!-- API Key Input -->
+    <div class="options-container">
+      <h3>Optional: API Key</h3>
+      <input type="text" id="api-key" placeholder="Enter your AI API key (optional)">
+    </div>
+
+    <!-- Generate Questions Button -->
+    <button id="generate-button">Generate Questions</button>
+
+    <!-- Results Container -->
+    <div id="results-container"></div>
+
+    <!-- User Data and Preferences (visible only when user is logged in) -->
+    <div id="user-preferences-container" style="display: none;">
+      <h3>User Preferences</h3>
+      <!-- User preferences will be displayed here -->
+      <button id="update-preferences-button">Update Preferences</button>
+    </div>
+    <div id="saved-questions-container" style="display: none;">
+      <h3>Saved Questions</h3>
+      <!-- Saved questions will be displayed here -->
+      <button id="add-question-button">Add Question</button>
+      <button id="remove-question-button">Remove Question</button>
+    </div>
+    <div id="custom-templates-container" style="display: none;">
+      <h3>Create Custom Template</h3>
+      <form id="custom-template-form">
+        <input type="text" id="template-name" placeholder="Template Name" required>
+        <textarea id="template-text" rows="5" placeholder="Template Text" required></textarea>
+        <button type="button" id="save-template-button">Save Template</button>
+        <button type="button" id="delete-template-button">Delete Template</button>
+      </form>
+    </div>    
+
+  <script src="script.js"></script>
+</body>
+
+</html> 
